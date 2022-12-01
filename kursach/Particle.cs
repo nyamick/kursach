@@ -14,14 +14,16 @@ namespace kursach
         public int Radius;
         public float X;
         public float Y;
-        public float Direction;
-        public float Speed;
+        public float SpeedX;
+        public float SpeedY;
         public float Life;
 
         public Particle()
         {
-            Direction = rand.Next(360);
-            Speed = 1 + rand.Next(10);
+            var direction = (double)rand.Next(360);
+            var speed = 1 + rand.Next(10);
+            SpeedX = (float)(Math.Cos(direction / 180 * Math.PI) * speed);
+            SpeedY = -(float)(Math.Sin(direction / 180 * Math.PI) * speed);
             Radius = 2 + rand.Next(10);
             Life = 20 + rand.Next(100);
         }
