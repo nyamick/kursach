@@ -11,8 +11,12 @@ namespace kursach
     class Emitter
     {
         List<Particle> particles = new List<Particle>();
+        public List<IImpactPoint> impactPoints = new List<IImpactPoint>();
+
         public int MousePositionX;
         public int MousePositionY;
+        public float GravitationX = 0;
+        public float GravitationY = 0;
         public void UpdateState()
         {
             foreach (var particle in particles)
@@ -31,6 +35,12 @@ namespace kursach
                 }
                 else
                 {
+                    foreach (var point in impactPoints)
+                    {
+                        point.ImpactParticle(particle);
+                    };
+                    particle.SpeedX += GravitationX;
+                    particle.SpeedY += GravitationY;
                     particle.X += particle.SpeedX;
                     particle.Y += particle.SpeedY;
                 }
@@ -59,7 +69,56 @@ namespace kursach
             {
                 particle.Draw(g);
             }
+            foreach (var point in impactPoints)
+            {
+                point.Render(g);
+            }
+
         }
+        public abstract class IImpactPoint
+        {
+            public float X;
+            public float Y;
+            public abstract void ImpactParticle(Particle particle);
+            public void Render(Graphics g)
+            {
+                g.FillEllipse(
+                        new SolidBrush(Color.Red),
+                        X - 5,
+                        Y - 5,
+                        10,
+                        10
+                    );
+            }
+        }
+        public class GravityPoint : IImpactPoint
+        {
+            public int Power = 100;
+            public override void ImpactParticle(Particle particle)
+            {
+                float gX = X - particle.X;
+                float gY = Y - particle.Y;
+                float r2 = (float)Math.Max(100, gX * gX + gY * gY);
+
+                particle.SpeedX += gX * Power / r2;
+                particle.SpeedY += gY * Power / r2;
+            }
+        }
+        public class AntiGravityPoint : IImpactPoint
+        {
+            public int Power = 100; 
+            public override void ImpactParticle(Particle particle)
+            {
+                float gX = X - particle.X;
+                float gY = Y - particle.Y;
+                float r2 = (float)Math.Max(100, gX * gX + gY * gY);
+
+                particle.SpeedX -= gX * Power / r2; 
+                particle.SpeedY -= gY * Power / r2; 
+            }
+        }
+
+
 
     }
 }
