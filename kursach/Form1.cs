@@ -22,37 +22,42 @@ namespace kursach
             for (var i = 0; i < 500; ++i)
             {
                 var particle = new Particle();
-                // переношу частицы в центр изображения
                 particle.X = picDisplay.Image.Width / 2;
                 particle.Y = picDisplay.Image.Height / 2;
-                // добавляю список
                 particles.Add(particle);
             }
 
 
 
         }
+        private void UpdateState()
+        {
+            foreach (var particle in particles)
+            {
+                var directionInRadians = particle.Direction / 180 * Math.PI;
+                particle.X += (float)(particle.Speed * Math.Cos(directionInRadians));
+                particle.Y -= (float)(particle.Speed * Math.Sin(directionInRadians));
+            }
 
-        int counter = 0;
+        }
+        private void Render(Graphics g)
+        {
+            foreach (var particle in particles)
+            {
+                particle.Draw(g);
+            }
+        }
+
+
         private void timer1_Tick(object sender, EventArgs e)
         {
-            counter++;
+            UpdateState(); 
             using (var g = Graphics.FromImage(picDisplay.Image))
             {
                 g.Clear(Color.White);
-                g.DrawString(
-                    counter.ToString(),
-                    new Font("Arial", 12), 
-                    new SolidBrush(Color.Black), 
-                    new PointF
-                    { 
-                        X = picDisplay.Image.Width / 2,
-                        Y = picDisplay.Image.Height / 2
-                    }
-                );
-                picDisplay.Invalidate();
+                Render(g); 
             }
-
+            picDisplay.Invalidate();
         }
     }
 }
