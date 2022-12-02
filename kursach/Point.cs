@@ -9,7 +9,7 @@ using static kursach.Particle;
 
 namespace kursach
 {
-    public abstract class Point // добавить наследование от одного класса
+    public abstract class Point 
     {
         public float X = 0;
         public float Y = 0;
@@ -95,7 +95,7 @@ namespace kursach
             g.DrawString(
             $"Вход",
             new Font("Verdana", 10),
-            new SolidBrush(Color.Black),
+            new SolidBrush(Color.Pink ),
             X,
             Y
             );
@@ -118,7 +118,7 @@ namespace kursach
             g.DrawString(
             $"Выход",
             new Font("Verdana", 10),
-            new SolidBrush(Color.Black),
+            new SolidBrush(Color.Pink),
             X,
             Y
             );

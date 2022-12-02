@@ -33,13 +33,14 @@ namespace kursach
                 ColorFrom = Color.Gold,
                 ColorTo = Color.FromArgb(0, Color.Red),
                 ParticlesPerTick = 10,
-                X = picDisplay.Width / 2,
-                Y = picDisplay.Height / 2,
+                X = picDisplay.Width / 10,
+                Y = picDisplay.Height / 10,
             };
 
             emitters.Add(this.emitter);
             exp = new ExitPoint
             {
+                
                 Color = Color.Blue,
                 X = (float)(picDisplay.Width * 0.5),
                 Y = picDisplay.Height / 2,
@@ -51,7 +52,7 @@ namespace kursach
             {
                 exitPoint = exp,
                 Color = Color.Purple,
-                X = (float)(picDisplay.Width * 0.25),
+                X = (float)(picDisplay.Width * 0.28),
                 Y = picDisplay.Height / 2,
                 X1 = 100,
                 Y1 = 100
@@ -96,8 +97,17 @@ namespace kursach
         private int MousePositionY = 0;
         private void picDisplay_MouseMove(object sender, MouseEventArgs e)
         {
-            exp.X = e.X;
-            exp.Y = e.Y;
+            
+            if (radioButton1.Checked == true)
+            {
+                exp.X = e.X;
+                exp.Y = e.Y;
+            }
+            else 
+            {
+                ep.X = e.X;
+                ep.Y = e.Y;
+            }
 
         }
 
@@ -105,6 +115,11 @@ namespace kursach
         {
             emitter.Direction = tbDirection.Value;
             lblDirection.Text = $"{tbDirection.Value}°";
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            emitter.GravitationY = tbGravitation.Value / 10;
         }
     }
 }
