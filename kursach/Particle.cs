@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace kursach
 {
-    class Particle
+    public class Particle
     {
         public static Random rand = new Random();
 

@@ -11,7 +11,8 @@ namespace kursach
     class Emitter
     {
         List<Particle> particles = new List<Particle>();
-        public List<IImpactPoint> impactPoints = new List<IImpactPoint>();
+        // public List<IImpactPoint> impactPoints = new List<IImpactPoint>();
+        public List<Point> impactPoints = new List<Point>();
 
         public int X; 
         public int Y;

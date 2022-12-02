@@ -17,6 +17,8 @@ namespace kursach
         /*List<Particle> particles = new List<Particle>();*/
         List<Emitter> emitters = new List<Emitter>();
         Emitter emitter;
+        EnterPoint ep;
+        ExitPoint exp;
         public Form1()
         {
             InitializeComponent();
@@ -36,6 +38,27 @@ namespace kursach
             };
 
             emitters.Add(this.emitter);
+            exp = new ExitPoint
+            {
+                Color = Color.Blue,
+                X = (float)(picDisplay.Width * 0.5),
+                Y = picDisplay.Height / 2,
+                X1 = 100,
+                Y1 = 100
+            };
+
+            ep = new EnterPoint
+            {
+                exitPoint = exp,
+                Color = Color.Purple,
+                X = (float)(picDisplay.Width * 0.25),
+                Y = picDisplay.Height / 2,
+                X1 = 100,
+                Y1 = 100
+            };
+
+            emitter.impactPoints.Add(ep);
+            emitter.impactPoints.Add(exp);
 
             /* emitter.impactPoints.Add(new GravityPoint
              {
@@ -73,14 +96,15 @@ namespace kursach
         private int MousePositionY = 0;
         private void picDisplay_MouseMove(object sender, MouseEventArgs e)
         {
-            emitter.MousePositionX = e.X;
-            emitter.MousePositionY = e.Y;
+            exp.X = e.X;
+            exp.Y = e.Y;
 
         }
 
         private void tbDirection_Scroll(object sender, EventArgs e)
         {
             emitter.Direction = tbDirection.Value;
+            lblDirection.Text = $"{tbDirection.Value}°";
         }
     }
 }
