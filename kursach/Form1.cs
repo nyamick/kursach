@@ -77,5 +77,10 @@ namespace kursach
             emitter.MousePositionY = e.Y;
 
         }
+
+        private void tbDirection_Scroll(object sender, EventArgs e)
+        {
+            emitter.Direction = tbDirection.Value;
+        }
     }
 }

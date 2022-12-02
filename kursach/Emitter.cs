@@ -30,7 +30,7 @@ namespace kursach
         public int MousePositionX;
         public int MousePositionY;
         public float GravitationX = 0;
-        public float GravitationY = 0;
+        public float GravitationY = 1;
         public int ParticlesCount = 500;
 
         public virtual Particle CreateParticle()
