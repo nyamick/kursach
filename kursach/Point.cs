@@ -29,6 +29,49 @@ namespace kursach
             );
         }
     }
+    public abstract class IImpactPoint
+    {
+        public float X;
+        public float Y;
+        public abstract void ImpactParticle(Particle particle);
+        public virtual void Render(Graphics g)
+        {
+            g.FillEllipse(
+                    new SolidBrush(Color.Red),
+                    X - 5,
+                    Y - 5,
+                    10,
+                    10
+                );
+        }
+    }
+    public class GravityPoint : IImpactPoint
+    {
+        public int Power = 100;
+        public override void ImpactParticle(Particle particle)
+        {
+            float gX = X - particle.X;
+            float gY = Y - particle.Y;
+            float r2 = (float)Math.Max(100, gX * gX + gY * gY);
+
+            particle.SpeedX += gX * Power / r2;
+            particle.SpeedY += gY * Power / r2;
+        }
+    }
+    public class AntiGravityPoint : IImpactPoint
+    {
+        public int Power = 100;
+        public override void ImpactParticle(Particle particle)
+        {
+            float gX = X - particle.X;
+            float gY = Y - particle.Y;
+            float r2 = (float)Math.Max(100, gX * gX + gY * gY);
+
+            particle.SpeedX -= gX * Power / r2;
+            particle.SpeedY -= gY * Power / r2;
+        }
+
+    }
 
     public class PaintPoint : Point
     {
@@ -123,5 +166,43 @@ namespace kursach
             Y
             );
         }
+
     }
+    public class CountPoint : Point
+    {
+        public int Radius = 100; 
+        public int Count = 0;
+        public override void ImpactParticle(Particle particle)
+        {
+            float gX = X - particle.X;
+            float gY = Y - particle.Y;
+            double r = Math.Sqrt(gX * gX + gY * gY); 
+            var p = (particle as ParticleColorful);
+            if (r + particle.Radius < Radius / 2) 
+            {
+                p.Radius = 0; 
+                p.Life = 0; 
+                Count++;
+            }
+        }
+        public override void Render(Graphics g)
+        {
+            g.DrawEllipse( 
+                 new Pen(Color.HotPink, 2),
+                 X - Radius / 2,
+                 Y - Radius / 2,
+                 Radius,
+                 Radius);
+            var stringFormat = new StringFormat();
+            stringFormat.Alignment = StringAlignment.Center;
+            stringFormat.LineAlignment = StringAlignment.Center; 
+            g.DrawString(
+                 $"{Count}",
+                 new Font("Segoe UI", 14),
+                 new SolidBrush(Color.HotPink),
+                 X, Y, stringFormat);
+
+        }
+    }
+
 }

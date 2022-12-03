@@ -16,9 +16,11 @@ namespace kursach
     {
         List<Emitter> emitters = new List<Emitter>();
         Emitter emitter;
+  
         EnterPoint ep;
         ExitPoint exp;
-       
+        CountPoint countPoint;
+
         public Form1()
         {
             InitializeComponent();
@@ -27,17 +29,21 @@ namespace kursach
             this.emitter = new Emitter 
             {
                 Direction = 0,
-                Spreading = 10,
-                SpeedMin = 10,
-                SpeedMax = 10,
-                ColorFrom = Color.Gold,
+                Spreading = 5,
+                SpeedMin = 1,
+                SpeedMax = 5,
+                ColorFrom = Color.Pink,
                 ColorTo = Color.FromArgb(0, Color.Red),
                 ParticlesPerTick = 10,
-                X = picDisplay.Width / 10,
+                X = picDisplay.Width / 2,
                 Y = picDisplay.Height / 10,
             };
 
             emitters.Add(this.emitter);
+
+            
+            
+
             exp = new ExitPoint
             {
                 
@@ -61,7 +67,10 @@ namespace kursach
             emitter.impactPoints.Add(ep);
             emitter.impactPoints.Add(exp);
 
-            
+            countPoint = new CountPoint { X = picDisplay.Width / 8, Y = picDisplay.Height / 2, };
+            emitter.impactPoints.Add(countPoint);
+
+
 
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -104,8 +113,27 @@ namespace kursach
 
         private void picDisplay_MouseClick(object sender, MouseEventArgs e)
         {
-            exp.X = e.X;
-            exp.Y = e.Y;
+            if (rbExp.Checked == true)
+            {
+                exp.X = e.X;
+                exp.Y = e.Y;
+            }
+            else if (radioButton2.Checked == true)
+            {
+                ep.X = e.X;
+                ep.Y = e.Y;
+            }
+            else
+            {
+                countPoint.X = e.X;
+                countPoint.Y = e.Y;
+            }
+        }
+
+        private void trackBar1_Scroll_1(object sender, EventArgs e)
+        {
+            emitter.SpeedMax = trackBar1.Value;
+            emitter.SpeedMin = trackBar1.Value;
         }
     }
 }
