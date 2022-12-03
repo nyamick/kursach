@@ -64,6 +64,17 @@ namespace kursach
                 Y1 = 100
             };
 
+            emitter.impactPoints.Add(new GravityPoint
+            {
+                X = picDisplay.Width / 2 + 100,
+                Y = picDisplay.Height / 2,
+            });
+            emitter.impactPoints.Add(new GravityPoint
+            {
+                X = picDisplay.Width / 2 - 100,
+                Y = picDisplay.Height / 2,
+            });
+
             emitter.impactPoints.Add(ep);
             emitter.impactPoints.Add(exp);
 
@@ -106,7 +117,15 @@ namespace kursach
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            emitter.Spreading = tbGravitation.Value;
+           
+            foreach (var p in emitter.impactPoints)
+            {
+                if (p is GravityPoint) 
+                {
+                  
+                    (p as GravityPoint).Power = tbGravitation.Value;
+                }
+            }
         }
 
         

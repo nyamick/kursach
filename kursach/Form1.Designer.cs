@@ -39,6 +39,8 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.rbCounter = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGravitation)).BeginInit();
@@ -91,7 +93,7 @@
             // tbGravitation
             // 
             this.tbGravitation.Location = new System.Drawing.Point(261, 542);
-            this.tbGravitation.Maximum = 360;
+            this.tbGravitation.Maximum = 100;
             this.tbGravitation.Name = "tbGravitation";
             this.tbGravitation.Size = new System.Drawing.Size(164, 56);
             this.tbGravitation.TabIndex = 4;
@@ -100,21 +102,22 @@
             // rbExp
             // 
             this.rbExp.AutoSize = true;
-            this.rbExp.Location = new System.Drawing.Point(787, 523);
+            this.rbExp.Location = new System.Drawing.Point(952, 523);
             this.rbExp.Name = "rbExp";
-            this.rbExp.Size = new System.Drawing.Size(103, 20);
+            this.rbExp.Size = new System.Drawing.Size(141, 20);
             this.rbExp.TabIndex = 5;
-            this.rbExp.Text = "radioButton1";
+            this.rbExp.Text = "Выход телепорта";
             this.rbExp.UseVisualStyleBackColor = true;
             // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(787, 550);
+            this.radioButton2.Location = new System.Drawing.Point(952, 550);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(103, 20);
+            this.radioButton2.Size = new System.Drawing.Size(132, 20);
             this.radioButton2.TabIndex = 6;
-            this.radioButton2.Text = "radioButton2";
+            this.radioButton2.Text = "Вход телепорта";
+            this.radioButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // trackBar1
@@ -128,19 +131,41 @@
             // rbCounter
             // 
             this.rbCounter.AutoSize = true;
-            this.rbCounter.Location = new System.Drawing.Point(969, 523);
+            this.rbCounter.Location = new System.Drawing.Point(1107, 523);
             this.rbCounter.Name = "rbCounter";
-            this.rbCounter.Size = new System.Drawing.Size(103, 20);
+            this.rbCounter.Size = new System.Drawing.Size(83, 20);
             this.rbCounter.TabIndex = 8;
             this.rbCounter.TabStop = true;
-            this.rbCounter.Text = "radioButton1";
+            this.rbCounter.Text = "Счетчик";
             this.rbCounter.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(294, 526);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 17);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Сила гравитона";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(525, 526);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 17);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Разброс";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1232, 582);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.rbCounter);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.radioButton2);
@@ -173,6 +198,8 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.RadioButton rbCounter;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 

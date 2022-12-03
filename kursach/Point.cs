@@ -45,7 +45,7 @@ namespace kursach
                 );
         }
     }
-    public class GravityPoint : IImpactPoint
+    public class GravityPoint : Point
     {
         public int Power = 100;
         public override void ImpactParticle(Particle particle)
