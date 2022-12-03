@@ -34,7 +34,7 @@ namespace kursach
                 SpeedMax = 5,
                 ColorFrom = Color.Pink,
                 ColorTo = Color.FromArgb(0, Color.Red),
-                ParticlesPerTick = 10,
+                ParticlesPerTick = 100,
                 X = picDisplay.Width / 2,
                 Y = picDisplay.Height / 10,
             };
@@ -154,5 +154,15 @@ namespace kursach
             emitter.SpeedMax = trackBar1.Value;
             emitter.SpeedMin = trackBar1.Value;
         }
+
+        
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            emitter.ParticlesPerTick = trackBar2.Value/2;
+            lblCount.Text = $"{trackBar2.Value}";
+        }
+
+        
     }
 }

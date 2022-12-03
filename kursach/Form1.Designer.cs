@@ -41,17 +41,21 @@
             this.rbCounter = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblCount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGravitation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.SuspendLayout();
             // 
             // picDisplay
             // 
             this.picDisplay.Location = new System.Drawing.Point(14, 12);
             this.picDisplay.Name = "picDisplay";
-            this.picDisplay.Size = new System.Drawing.Size(1208, 504);
+            this.picDisplay.Size = new System.Drawing.Size(1452, 601);
             this.picDisplay.TabIndex = 0;
             this.picDisplay.TabStop = false;
             this.picDisplay.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picDisplay_MouseClick);
@@ -65,7 +69,7 @@
             // 
             // tbDirection
             // 
-            this.tbDirection.Location = new System.Drawing.Point(24, 542);
+            this.tbDirection.Location = new System.Drawing.Point(12, 632);
             this.tbDirection.Maximum = 359;
             this.tbDirection.Name = "tbDirection";
             this.tbDirection.Size = new System.Drawing.Size(188, 56);
@@ -75,7 +79,7 @@
             // lblDirection
             // 
             this.lblDirection.AutoSize = true;
-            this.lblDirection.Location = new System.Drawing.Point(218, 542);
+            this.lblDirection.Location = new System.Drawing.Point(206, 632);
             this.lblDirection.Name = "lblDirection";
             this.lblDirection.Size = new System.Drawing.Size(0, 16);
             this.lblDirection.TabIndex = 2;
@@ -84,15 +88,16 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(65, 522);
+            this.label1.Location = new System.Drawing.Point(60, 616);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "Направление";
+        
             // 
             // tbGravitation
             // 
-            this.tbGravitation.Location = new System.Drawing.Point(261, 542);
+            this.tbGravitation.Location = new System.Drawing.Point(210, 632);
             this.tbGravitation.Maximum = 100;
             this.tbGravitation.Name = "tbGravitation";
             this.tbGravitation.Size = new System.Drawing.Size(164, 56);
@@ -102,7 +107,7 @@
             // rbExp
             // 
             this.rbExp.AutoSize = true;
-            this.rbExp.Location = new System.Drawing.Point(952, 523);
+            this.rbExp.Location = new System.Drawing.Point(1102, 632);
             this.rbExp.Name = "rbExp";
             this.rbExp.Size = new System.Drawing.Size(141, 20);
             this.rbExp.TabIndex = 5;
@@ -112,7 +117,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(952, 550);
+            this.radioButton2.Location = new System.Drawing.Point(955, 632);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(132, 20);
             this.radioButton2.TabIndex = 6;
@@ -122,7 +127,7 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(489, 542);
+            this.trackBar1.Location = new System.Drawing.Point(438, 632);
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(162, 56);
             this.trackBar1.TabIndex = 7;
@@ -131,7 +136,7 @@
             // rbCounter
             // 
             this.rbCounter.AutoSize = true;
-            this.rbCounter.Location = new System.Drawing.Point(1107, 523);
+            this.rbCounter.Location = new System.Drawing.Point(1257, 632);
             this.rbCounter.Name = "rbCounter";
             this.rbCounter.Size = new System.Drawing.Size(83, 20);
             this.rbCounter.TabIndex = 8;
@@ -143,7 +148,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(294, 526);
+            this.label2.Location = new System.Drawing.Point(243, 616);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 17);
             this.label2.TabIndex = 9;
@@ -153,17 +158,48 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(525, 526);
+            this.label3.Location = new System.Drawing.Point(482, 616);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 17);
+            this.label3.Size = new System.Drawing.Size(66, 17);
             this.label3.TabIndex = 10;
-            this.label3.Text = "Разброс";
+            this.label3.Text = "Скорость";
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.Location = new System.Drawing.Point(615, 632);
+            this.trackBar2.Maximum = 100;
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(150, 56);
+            this.trackBar2.TabIndex = 11;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(654, 616);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(88, 17);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Частиц в тик";
+            // 
+            // lblCount
+            // 
+            this.lblCount.AutoSize = true;
+            this.lblCount.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblCount.Location = new System.Drawing.Point(759, 631);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(0, 17);
+            this.lblCount.TabIndex = 13;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1232, 582);
+            this.ClientSize = new System.Drawing.Size(1478, 664);
+            this.Controls.Add(this.lblCount);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.trackBar2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.rbCounter);
@@ -177,10 +213,12 @@
             this.Controls.Add(this.picDisplay);
             this.Name = "Form1";
             this.Text = "Form1";
+          
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGravitation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,6 +238,9 @@
         private System.Windows.Forms.RadioButton rbCounter;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblCount;
     }
 }
 
