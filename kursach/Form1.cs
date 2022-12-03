@@ -126,6 +126,7 @@ namespace kursach
                     (p as GravityPoint).Power = tbGravitation.Value;
                 }
             }
+            lbGrav.Text = $"{tbGravitation.Value}";
         }
 
         
@@ -152,7 +153,7 @@ namespace kursach
         private void trackBar1_Scroll_1(object sender, EventArgs e)
         {
             emitter.SpeedMax = trackBar1.Value;
-            emitter.SpeedMin = trackBar1.Value;
+            emitter.SpeedMin = trackBar1.Value / 5;
         }
 
         
@@ -163,6 +164,13 @@ namespace kursach
             lblCount.Text = $"{trackBar2.Value}";
         }
 
-        
+        private void tbLife_Scroll(object sender, EventArgs e)
+        {
+            emitter.LifeMin = tbLife.Value / 3 ;
+            emitter.LifeMax = tbLife.Value * 10;
+            lbLife.Text = $"{tbLife.Value}";
+
+
+        }
     }
 }

@@ -48,9 +48,12 @@ namespace kursach
 
             foreach (var particle in particles)
             {
-                
+                particle.Life -= 1;
+
                 if (particle.Life <= 0)
                 {
+                    ResetParticle(particle);
+
                     if (particlesToCreate > 0)
                     {
                   
@@ -59,6 +62,9 @@ namespace kursach
                     }
                 }
                 else
+                    particle.X += particle.SpeedX;
+                    particle.Y += particle.SpeedY;
+                    
                 {
                     foreach (var point in impactPoints)
                     {
@@ -66,8 +72,7 @@ namespace kursach
                     };
                     particle.SpeedX += GravitationX;
                     particle.SpeedY += GravitationY;
-                    particle.X += particle.SpeedX;
-                    particle.Y += particle.SpeedY;
+                    
                 }
             }
 
