@@ -83,10 +83,10 @@ namespace kursach
         {
             
             
-                exp.X = e.X;
+                /*exp.X = e.X;
                 exp.Y = e.Y;
             
-
+*/
         }
 
         private void tbDirection_Scroll(object sender, EventArgs e)
@@ -98,6 +98,14 @@ namespace kursach
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             emitter.Spreading = tbGravitation.Value;
+        }
+
+        
+
+        private void picDisplay_MouseClick(object sender, MouseEventArgs e)
+        {
+            exp.X = e.X;
+            exp.Y = e.Y;
         }
     }
 }
