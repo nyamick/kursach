@@ -17,9 +17,9 @@ namespace kursach
         List<Emitter> emitters = new List<Emitter>();
         Emitter emitter;
   
-        EnterPoint ep;
-        ExitPoint exp;
-        CountPoint countPoint;
+        EnterPoint ep; //cоздаем поле входного портала
+        ExitPoint exp; //создаем поле выходного портала 
+        CountPoint countPoint; //создаем поле счетчика
 
         public Form1()
         {
@@ -44,7 +44,7 @@ namespace kursach
             
             
 
-            exp = new ExitPoint
+            exp = new ExitPoint //задаем цвет и начальное положение выходного портала 
             {
                 
                 Color = Color.Blue,
@@ -54,7 +54,7 @@ namespace kursach
                 Y1 = 100
             };
 
-            ep = new EnterPoint
+            ep = new EnterPoint // задаем цвет и начальное положение входного портала 
             {
                 exitPoint = exp,
                 Color = Color.Purple,
@@ -64,22 +64,24 @@ namespace kursach
                 Y1 = 100
             };
 
-            emitter.impactPoints.Add(new GravityPoint
+            emitter.impactPoints.Add(new GravityPoint //создаем гравитон и привязываем его к эммитеру
             {
                 X = picDisplay.Width / 2 + 100,
                 Y = picDisplay.Height / 2,
             });
-            emitter.impactPoints.Add(new GravityPoint
+            emitter.impactPoints.Add(new GravityPoint //создаем гравитон и привязываем его к эммитеру
             {
                 X = picDisplay.Width / 2 - 100,
                 Y = picDisplay.Height / 2,
             });
-
+             
+            //привязыаем точки входа и выхода к эммитеру
             emitter.impactPoints.Add(ep);
             emitter.impactPoints.Add(exp);
 
-            countPoint = new CountPoint { X = picDisplay.Width / 8, Y = picDisplay.Height / 2, };
-            emitter.impactPoints.Add(countPoint);
+            countPoint = new CountPoint { X = picDisplay.Width / 8, Y = picDisplay.Height / 2, }; //cоздаем счетчик
+           
+            emitter.impactPoints.Add(countPoint); //привязываем счетчик к эммитеру.
 
 
 
@@ -97,25 +99,15 @@ namespace kursach
             picDisplay.Invalidate();
         }
 
-        private int MousePositionX = 0;
-        private int MousePositionY = 0;
-        private void picDisplay_MouseMove(object sender, MouseEventArgs e)
-        {
-            
-            
-                /*exp.X = e.X;
-                exp.Y = e.Y;
-            
-*/
-        }
-
-        private void tbDirection_Scroll(object sender, EventArgs e)
+      
+   
+        private void tbDirection_Scroll(object sender, EventArgs e) //трек-бар для управления направлением частиц
         {
             emitter.Direction = tbDirection.Value;
             lblDirection.Text = $"{tbDirection.Value}°";
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        private void trackBar1_Scroll(object sender, EventArgs e) //трек-бар для управления силой гравитона
         {
            
             foreach (var p in emitter.impactPoints)
@@ -131,7 +123,7 @@ namespace kursach
 
         
 
-        private void picDisplay_MouseClick(object sender, MouseEventArgs e)
+        private void picDisplay_MouseClick(object sender, MouseEventArgs e) //обработка клика на ЛКМ для управления поталами и счетчиком
         {
             if (rbExp.Checked == true)
             {
@@ -150,7 +142,7 @@ namespace kursach
             }
         }
 
-        private void trackBar1_Scroll_1(object sender, EventArgs e)
+        private void trackBar1_Scroll_1(object sender, EventArgs e) //трек бар для управления направления частиц
         {
             emitter.SpeedMax = trackBar1.Value;
             emitter.SpeedMin = trackBar1.Value / 5;
@@ -158,13 +150,13 @@ namespace kursach
 
         
 
-        private void trackBar2_Scroll(object sender, EventArgs e)
+        private void trackBar2_Scroll(object sender, EventArgs e) //трек бар для управления кол-ва частиц в тик
         {
             emitter.ParticlesPerTick = trackBar2.Value/2;
             lblCount.Text = $"{trackBar2.Value}";
         }
 
-        private void tbLife_Scroll(object sender, EventArgs e)
+        private void tbLife_Scroll(object sender, EventArgs e) //трек бар для управления жизнью частиц
         {
             emitter.LifeMin = tbLife.Value / 3 ;
             emitter.LifeMax = tbLife.Value * 10;

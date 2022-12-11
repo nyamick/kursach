@@ -103,25 +103,26 @@ namespace kursach
     public class EnterPoint : Point
     {
         public ExitPoint exitPoint;
-        public int Angle = 0;
+      
         public override void ImpactParticle(Particle particle)
         {
             float gX = X - particle.X;
             float gY = Y - particle.Y;
 
-            double r = Math.Sqrt(gX * gX + gY * gY);
-            if (r + particle.Radius < 100 / 2)
+            double r = Math.Sqrt(gX * gX + gY * gY); // считаем расстояние от центра точки до центра частицы
+            if (r + particle.Radius < 100 / 2) // если частица оказалось внутри входого портала
             {
                 if (particle is ParticleColorful)
                 {
                     var p = (particle as ParticleColorful);
 
                     var m = new Matrix();
-                    m.Rotate(Angle);
+                    
 
                     var points = new[] { new PointF(gX, gY), new PointF(p.SpeedX, p.SpeedY) };
                     m.TransformPoints(points);
-
+                   
+                    //то перемещаем её в другой портал
                     p.X = exitPoint.X - points[0].X;
                     p.Y = exitPoint.Y - points[0].Y;
                     p.SpeedX = points[1].X;
@@ -131,7 +132,7 @@ namespace kursach
             }
         }
 
-        public override void Render(Graphics g)
+        public override void Render(Graphics g) //отрисовываем входной портал 
         {
             base.Render(g);
 
@@ -154,7 +155,7 @@ namespace kursach
 
         }
 
-        public override void Render(Graphics g)
+        public override void Render(Graphics g) //отрисовка выходного портала 
         {
             base.Render(g);
 
@@ -170,22 +171,23 @@ namespace kursach
     }
     public class CountPoint : Point
     {
-        public int Radius = 100; 
+        public float Radius = 100; 
         public int Count = 0;
         public override void ImpactParticle(Particle particle)
         {
             float gX = X - particle.X;
             float gY = Y - particle.Y;
-            double r = Math.Sqrt(gX * gX + gY * gY); 
+            double r = Math.Sqrt(gX * gX + gY * gY);  // считаем расстояние от центра точки до центра частицы
             var p = (particle as ParticleColorful);
-            if (r + particle.Radius < Radius / 2) 
+            if (r + particle.Radius < Radius / 2)  //если частица попала в счетчик
             {
-                p.Radius = 0; 
-                p.Life = 0; 
-                Count++;
+                p.Radius = 0;  //обнуляем радиус частицы
+                p.Life = 0;  //убиваем частицу 
+                Count++; //увеличиваем счетичк на 1
+                
             }
         }
-        public override void Render(Graphics g)
+        public override void Render(Graphics g) //отрисовывем счетчик
         {
             g.DrawEllipse( 
                  new Pen(Color.HotPink, 2),

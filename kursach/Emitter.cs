@@ -28,8 +28,7 @@ namespace kursach
         public Color ColorFrom = Color.White; 
         public Color ColorTo = Color.FromArgb(0, Color.Black); 
 
-        public int MousePositionX;
-        public int MousePositionY;
+        
         public float GravitationX = 0;
         public float GravitationY = 1/4;
         public int ParticlesCount = 500;
